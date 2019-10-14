@@ -1,0 +1,308 @@
+\documentclass[11pt]{article}
+
+% This is a helpful package that puts math inside length specifications
+\usepackage{calc}
+\usepackage{color}
+\usepackage[usenames,dvipsnames,svgnames,table]{xcolor}
+\usepackage{xhfill}
+
+% Layout: Puts the section titles on left side of page
+\reversemarginpar
+
+%
+%         PAPER SIZE, PAGE NUMBER, AND DOCUMENT LAYOUT NOTES:
+%
+% The next \usepackage line changes the layout for CV style section
+% headings as marginal notes. It also sets up the paper size as either
+% letter or A4. By default, letter was used. If A4 paper is desired,
+% comment out the letterpaper lines and uncomment the a4paper lines.
+%
+% As you can see, the margin widths and section title widths can be
+% easily adjusted.
+%
+% ALSO: Notice that the includefoot option can be commented OUT in order
+% to put the PAGE NUMBER *IN* the bottom margin. This will make the
+% effective text area larger.
+%
+% IF YOU WISH TO REMOVE THE ``of LASTPAGE'' next to each page number,
+% see the note about the +LP and -LP lines below. Comment out the +LP
+% and uncomment the -LP.
+%
+% IF YOU WISH TO REMOVE PAGE NUMBERS, be sure that the includefoot line
+% is uncommented and ALSO uncomment the \pagestyle{empty} a few lines
+% below.
+%
+
+%% Use these lines for A4-sized paper
+\usepackage[paper=a4paper,
+            includefoot, % Uncomment to put page number above margin
+            marginparwidth=30.5mm,    % Length of section titles
+            marginparsep=1.5mm,       % Space between titles and text
+            margin=25mm,              % 25mm margins
+            includemp]{geometry}
+
+%% More layout: Get rid of indenting throughout entire document
+\setlength{\parindent}{0in}
+
+%% This gives us fun enumeration environments. compactitem will be nice.
+\usepackage{paralist}
+
+%% Reference the last page in the page number
+%
+% NOTE: comment the +LP line and uncomment the -LP line to have page
+%       numbers without the ``of ##'' last page reference)
+%
+% NOTE: uncomment the \pagestyle{empty} line to get rid of all page
+%       numbers (make sure includefoot is commented out above)
+%
+\usepackage{fancyhdr,lastpage}
+\pagestyle{fancy}
+%\pagestyle{empty}      % Uncomment this to get rid of page numbers
+\fancyhf{}\renewcommand{\headrulewidth}{0pt}
+\fancyfootoffset{\marginparsep+\marginparwidth}
+\newlength{\footpageshift}
+\setlength{\footpageshift}
+          {0.5\textwidth+0.5\marginparsep+0.5\marginparwidth-2in}
+\lfoot{\hspace{\footpageshift}%
+       \parbox{4in}{\, \hfill %
+                    \arabic{page} of \protect\pageref*{LastPage} % +LP
+%                    \arabic{page}                               % -LP
+                    \hfill \,}}
+
+% Finally, give us PDF bookmarks
+\usepackage{color,hyperref}
+\definecolor{customaqua}{rgb}{0.192,0.518,0.608}
+\definecolor{customlightaqua}{rgb}{0.576,0.804,0.867}
+\hypersetup{colorlinks,breaklinks,
+            linkcolor=customaqua,urlcolor=customaqua,
+            anchorcolor=customaqua,citecolor=customaqua}
+
+%%%%%%%%%%%%%%%%%%%%%%%% End Document Setup %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%% Helper Commands %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% The title (name) with a horizontal rule under it
+%
+% Usage: \makeheading{name}
+%
+% Place at top of document. It should be the first thing.
+\newcommand{\makeheading}[3]%
+        {\hspace*{-\marginparsep minus \marginparwidth}%
+         \begin{minipage}[t]{\textwidth+\marginparwidth+\marginparsep}%
+								\centering
+                {\huge \sffamily \color{gray}{#1}}{\huge \sffamily #2}\hspace{0.2cm}\rule[-7pt]{1.5pt}{27pt}\hspace{0.2cm}{\color{customaqua}\huge \bfseries #3}\\[-0.15\baselineskip]%
+                 \rule[-1pt]{\columnwidth}{1pt}%
+         \end{minipage}}
+
+\renewcommand{\section}[2]%
+        {\pagebreak[2]\vspace{1.3\baselineskip}%
+         \phantomsection\addcontentsline{toc}{section}{#1}%
+         \hspace{0in}%
+         \marginpar{
+         \raggedright \scshape \bfseries #1}#2}
+
+% An itemize-style list with lots of space between items
+\newenvironment{outerlist}[1][\enskip\textbullet]%
+        {\begin{itemize}[#1]}{\end{itemize}%
+         \vspace{-.6\baselineskip}}
+
+% An environment IDENTICAL to outerlist that has better pre-list spacing
+% when used as the first thing in a \section 
+\newenvironment{lonelist}[1][\enskip\textbullet]%
+        {\vspace{-\baselineskip}\begin{list}{#1}{%
+        \setlength{\partopsep}{0pt}%
+        \setlength{\topsep}{0pt}}}
+        {\end{list}\vspace{-.6\baselineskip}}
+
+% An itemize-style list with little space between items
+\newenvironment{innerlist}[1][\enskip\textbullet]%
+        {\begin{compactitem}[#1]}{\end{compactitem}}
+
+% To add some paragraph space between lines.
+% This also tells LaTeX to preferably break a page on one of these gaps
+% if there is a needed pagebreak nearby.
+\newcommand{\blankline}{\quad\pagebreak[2]}
+
+%%%%%%%%%%%%%%%%%%%%%%%% End Helper Commands %%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%% Begin CV Document %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+\makeheading{Storm}{Collins}{Curriculum Vitae}
+
+\section{Contact Information}
+%
+% NOTE: Mind where the & separators and \\ breaks are in the following
+%       table.
+%
+% ALSO: \rcollength is the width of the right column of the table 
+%       (adjust it to your liking; default is 1.85in).
+%
+\newlength{\rcollength}\setlength{\rcollength}{2.3in}%
+%
+\begin{tabular}[t]{@{}p{\textwidth-\rcollength-20pt}p{\rcollength}}
+	collins.storm@gmail.com\\
+ 	+27 66 273 3039
+\end{tabular}
+
+\hspace{0pt}\xrfill[-8pt]{0.5pt}[customaqua]\hspace{0pt}
+
+\section{Work Experience}
+
+\textbf{Consulting \& Audit}
+%
+\blankline
+\begin{outerlist}
+					\item[] \textbf{\textcolor{customaqua}{Deloitte}}, Financial Services Advisory, Valuations, Senior Manager (May 2019 - Present)
+					\begin{innerlist}
+						\item BAU management of junior staff members, managing client relationships with regards to delivery, reporting \& explaining results, strategy for the team, proposals for new business, 
+						\item Derivative pricing in both IFRS 2 \& IFRS 13 standards, wide spectrum of instruments from employee share schemes, BEE options, to CVA, DVA, FVA, \& KVA,
+						\item Instrumental in spearheading a revamp of their existing limited C\# library for derivative pricing as well as educating junior members,
+					\end{innerlist}
+
+\end{outerlist}
+%
+\blankline
+
+
+\textbf{Investment Banking}
+%
+\blankline
+\begin{outerlist}
+					\item[] Counterparty Credit Risk Analyst at Standard Bank CIB (April 2014 - May 2019)
+					\begin{innerlist}
+						\item Developed a framework, in C\#, for performing stress testing analysis of counterparty credit risk which integrated with Adaptiv to calculate relevant metrics such as PFE, EPE, \& Economic Capital for various stressed economic scenarios.
+						\item Fielded wrong way risk queries from credit managers with regards to the exposure generated by the conditional default model.
+						\item Involved with vetting the consistency of exposures \& methodology in numerous trading system migrations \& Adaptiv upgrades.
+						\item Performed relevant analysis for how to best accommodate exotic type instruments that can't be accurately captured in Adaptiv.
+						\item Performed bespoke PFE calculations for instruments not catered for by Adaptiv.
+						\item Fielded queries from model validation with regards to reviews of stochastic processes used in Monte Carlo simulations.
+						\item Helped with the analysis \& implementation of back testing stochastic process parameters \& models via a framework developed in Python \& C\#.
+						\item Assisted with upgrading C\# code for calibrating stochastic process parameters. 
+						\item Fielded queries about collateral algorithm.
+						\item Assisted Asset Control in implementing revised market data specifications required for Adaptiv exposure calculations.
+					\end{innerlist}
+					\item[] Independent Valuations and Model Controller at ABSA Capital (February 2012 - March 2014)
+					\begin{innerlist}
+						\item Price and bid offer testing of Equity Derivative and Prime Services desks using observable/liquid market data.
+						\item Performed FVA, CVA, and CCRA calculations attributing moves in counterparty credit and funding exposure. 
+						\item Reviewed new product approvals and structured trade reviews in equities, prime services and credit. 
+						\item Performed observability analysis of market data.
+						\item Investigated valuation issues resulting from the application of OIS discounting, CVA, DVA and FVA to derivatives pricing. 
+						\item Investigated \& kept up to speed with relevant pricing methodologies for equity derivatives.
+					\end{innerlist}
+					\item[] Junior Quantitative Analyst at ABSA Capital (February 2010 - January 2012) 
+						\begin{innerlist}
+							\item Implemented/researched various pricing and hedging  methodologies for various asset classes (mainly credit and fixed income).
+							\item Aided in implementation of multi-curve system for FVA calculations.
+							\item Aided in development of standard Excel pricing platform via C\# and C++.
+							\item Performed various statistical analyses of market data for trading desks.
+						\end{innerlist}
+\end{outerlist}
+%
+\blankline
+
+
+\section{Tertiary Education}
+%
+{\textbf{Georgia Institute of Technology}}, 
+Atlanta, Georgia
+\begin{outerlist}
+
+\item[] Masters of Computer Science, \emph{In Progress},
+        \begin{innerlist}
+        \item Dissertation Topic: \textit{\href{http://wiredspace.wits.ac.za/bitstream/handle/10539/7200/MSc\_Dissertation\_of\_StormCollins\%280408399D\%29\_2008.pdf?sequence=1}{Multi-Trace Operators and the Gauge-Gravity Correspondence}}
+        \item Supervisor: {Professor Robert S.~de~Mello~Koch}
+        \item Area of Study: String Theory (AdS/CFT Correspondence)
+        \end{innerlist}
+\end{outerlist}
+\hspace{0pt}\xrfill[0pt]{0.5pt}[customaqua]\hspace{0pt}
+
+%
+{\textbf{University of the Witwatersrand}}, 
+Johannesburg
+\begin{outerlist}
+
+\item[] Masters of Science, 
+        {Physics}, 2008, \emph{with distinction}
+        \begin{innerlist}
+        \item Dissertation Topic: \textit{\href{http://wiredspace.wits.ac.za/bitstream/handle/10539/7200/MSc\_Dissertation\_of\_StormCollins\%280408399D\%29\_2008.pdf?sequence=1}{Multi-Trace Operators and the Gauge-Gravity Correspondence}}
+        \item Supervisor: {Professor Robert S.~de~Mello~Koch}
+        \item Area of Study: String Theory (AdS/CFT Correspondence)
+        \end{innerlist}
+
+\item[] Bachelor of Science (Honours), 
+				{Advanced Mathematics of Finance}, 2009, \emph{with distinction}
+				\begin{innerlist}
+				\item Honours Project, \textit{\href{http://www.wits.ac.za/files/rese4efda12f86a43e8a94975a9cd421b46.pdf}{A Low-Dimensional LIBOR Market Model}}
+				\end{innerlist}
+				
+\item[] Bachelor of Science (Honours), 
+        {Physics}, 2007, \emph{with distinction}
+        \begin{innerlist}
+        \item Honours Project, \textit{Quantum Statistics of Anyons}
+        \end{innerlist}
+\end{outerlist}
+\hspace{0pt}\xrfill[0pt]{0.5pt}[customaqua]\hspace{0pt}
+
+\section{Publications}
+%
+\emph{Restricted Schur Polynomials and Finite N Counting.} Storm Collins, Physical Review \textbf{D 79}, 026002 (2009), \href{http://arxiv.org/pdf/0810.4217.pdf}{http://arxiv.org/pdf/0810.4217.pdf}
+
+\blankline
+
+\emph{Exact Multi-Matrix Correlators.} R.~Bhattacharyya, S.~Collins and 
+			\\R.~de~Mello~Koch, Journal of High Energy Physics JHEP\textbf{03}(2008)044, 
+			\\ \href{http://arxiv.org/pdf/0801.2061.pdf}{http://arxiv.org/pdf/0801.2061.pdf}
+			
+\hspace{0pt}\xrfill[0pt]{0.5pt}[customaqua]\hspace{0pt}
+
+
+\section{University Awards} 
+%
+\blankline
+		\begin{innerlist}
+				\item Standard Bank Award for Honours in Advanced Mathematics of Finance (2009)
+				\item CH Leon bursary (2009)
+				\item South African Institute of Physics (SAIP) award for best Masters talk in theoretical physics (2008)
+				\item Merck achievement award for best interdisciplinary third year BSc student (2006)
+				\item Diamond research laboratory award for top third year physics student (2006)
+				\item Frank Nabarro summer essay prize for Physics III (2006)
+				\item Diamond research laboratory award for top second year physics student (2005)
+		\end{innerlist}
+
+\blankline
+
+\hspace{0pt}\xrfill[0pt]{0.5pt}[customaqua]\hspace{0pt}
+\section{Computer Skills} 
+%
+
+\textbf{Programming Languages}
+
+\blankline
+
+		\begin{innerlist}
+				\item \textbf{Advanced:} C\#, Matlab, Python (including Numpy \& Scipy). 
+				\item \textbf{Intermediate:} C$\backslash$C++				
+				\item \textbf{Basic:} Java, SQL
+		\end{innerlist}
+
+\blankline
+
+\textbf{Applications}
+
+\blankline
+
+	\begin{innerlist}
+		\item \textbf{Advanced:} \textit{MS Excel} - Proficient in extending functionality via VBA UDFs, C\#  xlls and Excel-DNA, FIS/Sungard Adaptiv (Counterparty Credit Exposure management system). 
+		\item \textbf{Intermediate:} \textit{Front Arena} (Trading system) - Proficient in coding python scripts \& SQL for pricing, risking \& data queries.
+\end{innerlist}
+	
+\hspace{0pt}\xrfill[0pt]{0.5pt}[customaqua]\hspace{0pt}
+
+
+
+\end{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%% End CV Document %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
